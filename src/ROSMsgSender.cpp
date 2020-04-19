@@ -29,13 +29,11 @@ void RosMsgSender::send()
 {
 	RosDataHandleBase* RosDataHandleBasePtr;
 	RosDataHandleBasePtr = m_queue.dequeue();
-	std::cout << "dequeue: " << endl;
 	RosDataHandleBasePtr->publish();
 }
 
 void RosMsgSender::run()
 {
-	std::cout << "RosMsgSender started topic: " <<  m_topicName << endl;
 	while (1)
 	{
 		send();

@@ -37,27 +37,17 @@ public:
 	{
 		RosMsgSender* rosMsgSender;
 		rosMsgSender = new RosMsgSender;
-        std::cout << "m_rosNodeHandlePtr publisherInit " <<  m_rosNodeHandlePtr << endl;
 		pool->setNodeHandle(m_rosNodeHandlePtr);
 		m_topicName = pool->getTopicName();
-        std::cout << "m_topicName publisherInit " <<  m_topicName << endl;
-        std::cout << "pool->getTopicName()" <<  pool->getTopicName() << endl;
         rosMsgSender->setTopicName(m_topicName);
-        std::cout << "m_publishers_map[m_topicName]1 " <<  m_publishers_map[m_topicName] << endl;
 		if (m_publishers_map[m_topicName])
 		{
-            std::cout << "if m_publishers_map[m_topicName] " << endl;
 			return;
 		}
 		else
 		{
-            std::cout << "else m_publishers_map[m_topicName] " << rosMsgSender << endl;
 			m_publishers_map[m_topicName] = rosMsgSender;
-		}
-
-        std::cout << "m_publishers_map[m_topicName]2 " <<  m_publishers_map[m_topicName] << endl;
-
-        
+		}        
 	}
 
 	void publish(RosDataHandleBase* RosDataHandleBasePtr);

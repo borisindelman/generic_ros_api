@@ -8,22 +8,9 @@
 
 class RosDataHandleBase;
 
-//class RosMsgSenderBase : public OSALThread
-//{
-//public:
-//	RosMsgSenderBase() {}
-//	~RosMsgSenderBase() {}
-//
-//	virtual void printRosMsgSenderBase() = 0;
-//
-//private:
-//
-//};
-
 class RosMsgSender : public OSALThread
 {
 public:
-	//typedef void(*FUNC_PTR)(T);
 
 	RosMsgSender();
 	virtual ~RosMsgSender();

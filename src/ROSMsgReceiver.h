@@ -42,7 +42,6 @@ public:
 		RosDataSubscribeHandle<T>* ptr = m_pool->allocate();
 		if(!ptr)
 		{
-			std::cout << "Pool sub Allocate Error" << endl;
 			return;
 		}
 		ptr->setData(&RosMsg);
@@ -68,9 +67,7 @@ private:
 	void receive()
 	{
 		RosDataSubscribeHandle<T>* ptr;
-		std::cout << "receive()" << endl;
 		ptr = m_queue.dequeue();
-		std::cout << "dequeue_rec" << endl;
 		ptr->handle();
 		m_pool->deallocate(ptr);
 	}

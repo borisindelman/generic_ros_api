@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ros_com_framework)
-set (ROS_COM_FRAMEWORK_VERSION_MAJOR 1)
-set (ROS_COM_FRAMEWORK_VERSION_MINOR 0)
-set (ROS_COM_FRAMEWORK_VERSION_PATCH 0)
+project(ros_interface_layer)
+set (ros_interface_layer_VERSION_MAJOR 1)
+set (ros_interface_layer_VERSION_MINOR 0)
+set (ros_interface_layer_VERSION_PATCH 0)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 set(CMAKE_CXX_STANDARD 11) 
@@ -67,15 +67,27 @@ include_directories(
 
 include_directories(
 "src/"
-"harness/"
+"examples/"
 )
 
-file(GLOB ros_com_framework_SOURCES "src/*.cpp" "harness/*.cpp")
+# Build Library
+file(GLOB ros_interface_layer_SOURCES "src/*.cpp")
 
-add_executable(ros_com_interface_harness ${ros_com_framework_SOURCES})
-target_link_libraries(ros_com_interface_harness ${catkin_LIBRARIES})
-target_compile_definitions(ros_com_interface_harness PRIVATE LINUX)
-target_link_libraries(ros_com_interface_harness
+add_library(ros_interface_layer ${ros_interface_layer_SOURCES})
+target_link_libraries(ros_interface_layer ${catkin_LIBRARIES})
+target_compile_definitions(ros_interface_layer PRIVATE LINUX)
+target_link_libraries(ros_interface_layer
   ${CMAKE_DL_LIBS}
 )
-add_dependencies(ros_com_interface_harness ${catkin_EXPORTED_TARGETS}) 
+add_dependencies(ros_interface_layer ${catkin_EXPORTED_TARGETS}) 
+
+# Build example
+file(GLOB ros_interface_layer_example_SOURCES "src/*.cpp" "examples/*.cpp")
+
+add_executable(ros_interface_layer_example ${ros_interface_layer_example_SOURCES})
+target_link_libraries(ros_interface_layer_example ${catkin_LIBRARIES})
+target_compile_definitions(ros_interface_layer_example PRIVATE LINUX)
+target_link_libraries(ros_interface_layer_example
+  ${CMAKE_DL_LIBS}
+)
+add_dependencies(ros_interface_layer_example ${catkin_EXPORTED_TARGETS}) 

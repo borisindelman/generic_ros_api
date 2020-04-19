@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>ros_com_framework</name>
+  <name>ros_interface_layer</name>
 
   <version>1.0.0</version>
 
-  <description>The ros_com_framework package</description>
+  <description>The ros_interface_layer package</description>
 
   <maintainer email="john.doe@todo.todo">johne.doe</maintainer>
 

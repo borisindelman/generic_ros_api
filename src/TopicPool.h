@@ -94,23 +94,16 @@ public:
 	R* allocate()
 	{
 		R* temp_r_ptr;
-		std::cout << "BULBUL1" << endl;
 		temp_r_ptr = (R*)StaticPool::malloc();
 		if(!temp_r_ptr)
 		{
-			std::cout << "Allocation error" << endl;
 			return NULL;
 		}
-		std::cout << "temp_r_ptr " <<  temp_r_ptr << endl;
-		std::cout << "this->m_topicName: " << this->m_topicName << endl;
 		temp_r_ptr = new(temp_r_ptr) R();
 		// std::cout << "BULBUL3" << endl;
 		temp_r_ptr->setTopicName(this->m_topicName);
-		std::cout << "this->m_rosNodeHandlePtr " <<  this->m_rosNodeHandlePtr << endl;
 		temp_r_ptr->setNodeHandle(this->m_rosNodeHandlePtr);
-        std::cout << "BULBUL3" << endl;
 		temp_r_ptr->publisherInit();
-		std::cout << "BULBUL4" << endl;
 		return temp_r_ptr;
 	}
 

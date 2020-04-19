@@ -30,12 +30,9 @@ public:
 	{
 		if(ros::ok())
 		{
-			std::cout << "convert " << endl;
 			convert();  // build T member (convert) in derived implementation 
-            std::cout << "m_topicName in publish  " <<  m_topicName << endl;
 			if (m_publishers.count(m_topicName))
 			{
-				std::cout << "--------- BORIS -------------" << endl;
 				m_publishers[m_topicName].publish(m_rosMsg);
 				// ros::spinOnce();
 			}
@@ -62,11 +59,7 @@ public:
 		}
 		else
 		{
-            std::cout << "m_rosNodeHandlePtr " << m_rosNodeHandlePtr << endl;
-            std::cout << "m_publishers[m_topicName] " << m_publishers[m_topicName] << endl;
 			m_publishers[m_topicName] = m_rosNodeHandlePtr->advertise<T>(m_topicName, PUB_QUEUE_SIZE);
-            // m_publishers[m_topicName] = nh.advertise<T>(m_topicName, PUB_QUEUE_SIZE);
-            std::cout << "m_publishers[m_topicName] " << m_publishers[m_topicName] << endl;
 		}
 	}
 

@@ -13,11 +13,6 @@ public:
 	RosDataSubscribeHandle(){}
 	virtual ~RosDataSubscribeHandle() {}
 
-	// std::string getTopicName()
-	// {
-	// 	return m_topicName;
-	// };
-
 	void setTopicName(std::string topicName)
 	{
 		m_topicName = topicName;
@@ -28,9 +23,7 @@ public:
 	//default data set to rosmsg type
 	virtual void setData(T* rosMsg)
 	{
-		std::cout << "rosMsg->test.data " << rosMsg->data << endl;
 		m_rosMsg = *rosMsg;
-		std::cout << "m_rosMsg->test.data " << m_rosMsg.data << endl;
 	}
 
 protected:
